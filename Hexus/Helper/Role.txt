@@ -1,0 +1,24 @@
+private static async Task CreateRoleIfNotExist(RoleManager<IdentityRole> _roleManager, string role)
+{
+    var isExist = await _roleManager.RoleExistsAsync(role);
+    if (!isExist)
+    {
+        await _roleManager.CreateAsync(new IdentityRole()
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = role
+        });
+    }
+}
+
+[HttpPost]
+public async Task<IActionResult> CreateRole(RoleViewModel vm)
+{
+    await _roleManager.CreateAsync(new IdentityRole { Name = vm.Name });
+
+    return RedirectToAction("Index");
+}
+
+ base.OnModelCreating(builder);
+
+     builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "admin", NormalizedName = "admin".ToUpper() });
