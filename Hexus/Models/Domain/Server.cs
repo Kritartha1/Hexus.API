@@ -8,7 +8,10 @@ namespace Hexus.Models.Domain
         public string Name { get; set; }
         public string Description { get; set; }
         public IList<User> Users { get; set; }
-        public IList<IdentityRole>
+        /*public string[] Roles { get; set; }*/
+        public IList<Role>? Roles { get; set; }  //user who creates a server gets the admin role
+        public IList<Channel>? Channels { get; set; }
+        public IList<Category> Categories { get; set; } 
 
     }
 }

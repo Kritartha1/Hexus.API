@@ -114,3 +114,4 @@ C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus\obj\Debug\net7.0\refint\Hexus.d
 C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus\obj\Debug\net7.0\Hexus.pdb
 C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus\obj\Debug\net7.0\Hexus.genruntimeconfig.cache
 C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus\obj\Debug\net7.0\ref\Hexus.dll
+C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus\bin\Debug\net7.0\libman.json

@@ -22,3 +22,9 @@ public async Task<IActionResult> CreateRole(RoleViewModel vm)
  base.OnModelCreating(builder);
 
      builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "admin", NormalizedName = "admin".ToUpper() });
+
+
+
+
+
+     Roles: User,SuperAdmin,Admin,Moderator

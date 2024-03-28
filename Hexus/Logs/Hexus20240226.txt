@@ -1,0 +1,64 @@
+2024-02-26 06:44:37.691 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-26 06:44:38.681 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-26 06:44:38.682 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-26 06:44:38.685 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-26 06:44:38.687 +00:00 [INF] Hosting environment: Development
+2024-02-26 06:44:38.688 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-26 06:44:40.947 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-26 06:44:41.791 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 847.8799ms
+2024-02-26 06:44:41.886 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-26 06:44:41.886 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-26 06:44:41.922 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 31.1685ms
+2024-02-26 06:44:42.044 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 157.3887ms
+2024-02-26 06:44:42.129 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-26 06:44:42.792 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 662.5756ms
+2024-02-26 07:12:46.330 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-26 07:12:46.700 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-26 07:12:46.702 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-26 07:12:46.705 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-26 07:12:46.706 +00:00 [INF] Hosting environment: Development
+2024-02-26 07:12:46.708 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-26 07:12:47.829 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-26 07:12:48.694 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 870.4640ms
+2024-02-26 07:12:48.704 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-26 07:12:48.704 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-26 07:12:48.721 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 17.2314ms
+2024-02-26 07:12:48.791 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 87.7760ms
+2024-02-26 07:12:49.009 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-26 07:12:49.277 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 267.9833ms
+2024-02-26 12:17:52.338 +00:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-26 12:17:52.404 +00:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-26 12:17:52.407 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-26 12:17:52.408 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-26 12:17:52.434 +00:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-02-26 12:17:52.454 +00:00 [INF] Applying migration '20240226121726_New migration-1'.
+2024-02-26 12:17:52.537 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Messages] (
+    [Id] uniqueidentifier NOT NULL,
+    [SenderId] nvarchar(450) NOT NULL,
+    [SenderUserName] nvarchar(max) NOT NULL,
+    [ReceiverId] nvarchar(450) NOT NULL,
+    [ReceiverUserName] nvarchar(max) NOT NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [DateRead] datetime2 NULL,
+    [MessageSent] datetime2 NOT NULL,
+    [senderDeleted] bit NOT NULL,
+    [receiverDeleted] bit NOT NULL,
+    CONSTRAINT [PK_Messages] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Messages_AspNetUsers_ReceiverId] FOREIGN KEY ([ReceiverId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Messages_AspNetUsers_SenderId] FOREIGN KEY ([SenderId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);
+2024-02-26 12:17:52.538 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Messages_ReceiverId] ON [Messages] ([ReceiverId]);
+2024-02-26 12:17:52.540 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Messages_SenderId] ON [Messages] ([SenderId]);
+2024-02-26 12:17:52.541 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240226121726_New migration-1', N'7.0.16');

@@ -1,11 +1,18 @@
 /*using Adhaar.API.Data;
 using Adhaar.API.Helper;
-using Adhaar.API.Mappings;
+
 using Adhaar.API.Models.Domain;
 using Adhaar.API.Repositories.Implementaion;
 using Adhaar.API.Repositories.Interface;
 using Adhaar.API.Services;
 using Adhaar.API.SMS;*/
+/*using Hexus.Mappings;*/
+using Hexus.Data;
+using Hexus.Mappings;
+using Hexus.Models.Domain;
+using Hexus.Repositories.Implementation;
+using Hexus.Repositories.Interface;
+using Hexus.SIgnalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +27,7 @@ using Twilio.Rest.Api.V2010.Account;
 [ExcludeFromCodeCoverage]
 public class Program
 {
-    public static void Main(string[] args)
+    public static  void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +41,7 @@ public class Program
 
         builder.Logging.ClearProviders();
         builder.Logging.AddSerilog(logger);
+        builder.Services.AddSignalR();
 
         builder.Services.AddControllers();
 
@@ -99,28 +107,34 @@ public class Program
         ///////////////////////////////////////////////////////////////////////////////////////////
         ///
        /* builder.Services.AddTransient<IMailService, MailService>();
-        builder.Services.AddTransient<IIdentityMessageService, SmsService>();
+        builder.Services.AddTransient<IIdentityMessageService, SmsService>();*/
 
-        builder.Services.AddDbContext<AdhaarApiDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AdhaarConnectionString"))
+        builder.Services.AddDbContext<HexusApiDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("HexusConnectionString"))
         );
 
-        builder.Services.AddDbContext<AdhaarApiAuthDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AdhaarConnectionString"))
-        );*/
+        builder.Services.AddDbContext<HexusApiAuthDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("HexusConnectionString"))
+        );
 
-       /* builder.Services.AddScoped<IUserRepository, SQLUserRepository>();
         builder.Services.AddScoped<ITokenRepository, TokenRepository>();
-        builder.Services.AddScoped<IImageRepository, ImageRepository>();
+        builder.Services.AddScoped<IDMRepository, DMRepository>();
+        builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
+        builder.Services.AddSingleton<PresenceTracker>();
 
-        builder.Services.AddAutoMapper(typeof(AutoMapperprofiles));
+        /* builder.Services.AddScoped<IImageRepository, ImageRepository>();*/
 
-        builder.Services.AddIdentityCore<IdentityUser>().AddRoles<IdentityRole>()
-            .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>("Adhaar.API")
-            .AddEntityFrameworkStores<AdhaarApiAuthDbContext>()
-            .AddDefaultTokenProviders();*/
+
+        // builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+
+        builder.Services.AddIdentityCore<User>().AddRoles<IdentityRole>()
+            .AddTokenProvider<DataProtectorTokenProvider<User>>("Hexus")
+            .AddEntityFrameworkStores<HexusApiAuthDbContext>()
+            .AddDefaultTokenProviders();
 
         builder.Services.Configure<IdentityOptions>(options =>
         {
@@ -137,23 +151,38 @@ public class Program
 
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
             options =>
-            options.TokenValidationParameters = new TokenValidationParameters
             {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateIssuerSigningKey = true,
-                ValidateLifetime = true,
-                ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                ValidAudience = builder.Configuration["Jwt:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
 
             }
-            );
+            
+            ) ;
 
-
-
-
-
+       
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -168,7 +197,9 @@ public class Program
         {
             options.AllowAnyHeader();
             options.AllowAnyMethod();
-            options.AllowAnyOrigin();
+            options.AllowCredentials();
+            options.WithOrigins("http://localhost:4200");
+            /*options.AllowAnyOrigin();*/
             //options.AllowCredentials();
         });
 
@@ -176,6 +207,8 @@ public class Program
         app.UseAuthorization();
 
         app.MapControllers();
+        app.MapHub<PresenceHub>("hubs/presence");
+        app.MapHub<MessageHub>("hubs/message");
 
         app.Run();
 

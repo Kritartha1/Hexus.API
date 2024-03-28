@@ -1,0 +1,603 @@
+2024-02-29 06:52:13.651 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-29 06:52:14.683 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-29 06:52:14.685 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-29 06:52:14.690 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-29 06:52:14.691 +00:00 [INF] Hosting environment: Development
+2024-02-29 06:52:14.693 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-29 06:52:16.800 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-29 06:52:17.540 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-29 06:52:17.540 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 739.1500ms
+2024-02-29 06:52:17.541 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-29 06:52:17.554 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 13.7088ms
+2024-02-29 06:52:17.639 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 98.2345ms
+2024-02-29 06:52:17.710 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-29 06:52:17.757 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/favicon-32x32.png - -
+2024-02-29 06:52:17.785 +00:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-02-29 06:52:17.789 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/favicon-32x32.png - - - 200 628 image/png 32.1686ms
+2024-02-29 06:52:17.949 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 238.2187ms
+2024-02-29 06:53:39.670 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Messages application/json 58
+2024-02-29 06:53:39.679 +00:00 [INF] CORS policy execution failed.
+2024-02-29 06:53:39.680 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 06:53:39.941 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 06:53:39.986 +00:00 [INF] Route matched with {action = "CreateMessage", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Models.DTO.MessageDto]] CreateMessage(Hexus.Models.DTO.CreateMessageDto) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 06:53:40.625 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-02-29 06:53:40.634 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.CreateMessage (Hexus) in 641.489ms
+2024-02-29 06:53:40.638 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 06:53:40.643 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Messages application/json 58 - 400 - text/plain;+charset=utf-8 973.5688ms
+2024-02-29 06:54:06.231 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60
+2024-02-29 06:54:06.241 +00:00 [INF] CORS policy execution failed.
+2024-02-29 06:54:06.243 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 06:54:06.248 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 06:54:06.267 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-29 06:54:09.040 +00:00 [INF] Executed DbCommand (71ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 06:54:09.506 +00:00 [INF] Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-02-29 06:54:09.609 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-02-29 06:54:09.621 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 3350.6495ms
+2024-02-29 06:54:09.625 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 06:54:09.636 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60 - 200 - application/json;+charset=utf-8 3405.0177ms
+2024-02-29 06:54:43.655 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Messages application/json 58
+2024-02-29 06:54:43.665 +00:00 [INF] CORS policy execution failed.
+2024-02-29 06:54:43.666 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 06:54:43.733 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 06:54:43.735 +00:00 [INF] Route matched with {action = "CreateMessage", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Models.DTO.MessageDto]] CreateMessage(Hexus.Models.DTO.CreateMessageDto) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 06:54:43.749 +00:00 [INF] a@gmail.com
+2024-02-29 06:54:43.751 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-02-29 06:54:43.753 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.CreateMessage (Hexus) in 15.6615ms
+2024-02-29 06:54:43.754 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 06:54:43.756 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Messages application/json 58 - 400 - text/plain;+charset=utf-8 100.2834ms
+2024-02-29 06:54:52.186 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Messages application/json 58
+2024-02-29 06:54:52.188 +00:00 [INF] CORS policy execution failed.
+2024-02-29 06:54:52.189 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 06:54:52.193 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 06:54:52.194 +00:00 [INF] Route matched with {action = "CreateMessage", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Models.DTO.MessageDto]] CreateMessage(Hexus.Models.DTO.CreateMessageDto) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 06:54:52.199 +00:00 [INF] a@gmail.com
+2024-02-29 06:54:52.274 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 06:54:52.282 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 06:54:52.508 +00:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (Size = 4000), @p6='?' (Size = 450), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Messages] ([Id], [Content], [DateRead], [MessageSent], [ReceiverId], [ReceiverUserName], [SenderId], [SenderUserName], [receiverDeleted], [senderDeleted])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2024-02-29 06:54:52.535 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.MessageDto'.
+2024-02-29 06:54:52.559 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.CreateMessage (Hexus) in 362.3266ms
+2024-02-29 06:54:52.565 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 06:54:52.570 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Messages application/json 58 - 200 - application/json;+charset=utf-8 383.6404ms
+2024-02-29 09:29:34.191 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-29 09:29:34.609 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-29 09:29:34.611 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-29 09:29:34.614 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-29 09:29:34.615 +00:00 [INF] Hosting environment: Development
+2024-02-29 09:29:34.617 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-29 09:29:36.699 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-29 09:29:37.160 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 466.1939ms
+2024-02-29 09:29:37.214 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-29 09:29:37.214 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-29 09:29:37.230 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 15.3765ms
+2024-02-29 09:29:37.310 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 96.2311ms
+2024-02-29 09:29:37.403 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-29 09:29:37.645 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 242.5611ms
+2024-02-29 09:30:06.412 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Inbox&PageNumber=1&PageSize=5 - -
+2024-02-29 09:30:06.546 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:30:06.594 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:30:08.881 +00:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE 0 = 1
+2024-02-29 09:30:09.014 +00:00 [INF] Executed DbCommand (48ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE 0 = 1
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 09:30:09.054 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 09:30:09.091 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 2488.735ms
+2024-02-29 09:30:09.094 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:30:09.107 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Inbox&PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 2697.6756ms
+2024-02-29 09:30:16.936 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - -
+2024-02-29 09:30:16.946 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:30:16.948 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:30:16.983 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE 0 = 1
+2024-02-29 09:30:16.995 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE 0 = 1
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 09:30:17.000 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 09:30:17.002 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 51.1416ms
+2024-02-29 09:30:17.004 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:30:17.007 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 70.5192ms
+2024-02-29 09:30:41.310 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Container=Outbox&PageNumber=1&PageSize=5 - -
+2024-02-29 09:30:41.319 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:30:41.322 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:30:41.343 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-02-29 09:30:41.352 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 27.5175ms
+2024-02-29 09:30:41.375 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:30:41.378 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Container=Outbox&PageNumber=1&PageSize=5 - - - 400 - application/problem+json;+charset=utf-8 68.6180ms
+2024-02-29 09:31:42.655 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60
+2024-02-29 09:31:42.669 +00:00 [INF] CORS policy execution failed.
+2024-02-29 09:31:42.670 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 09:31:42.674 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 09:31:42.682 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-29 09:31:42.844 +00:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 09:31:43.117 +00:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-02-29 09:31:43.173 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-02-29 09:31:43.183 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 498.3831ms
+2024-02-29 09:31:43.185 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 09:31:43.187 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60 - 200 - application/json;+charset=utf-8 531.9303ms
+2024-02-29 09:32:11.322 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Container=Outbox&PageNumber=1&PageSize=5 - -
+2024-02-29 09:32:11.375 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:32:11.377 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:32:11.381 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-02-29 09:32:11.383 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 2.9271ms
+2024-02-29 09:32:11.393 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:32:11.394 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Container=Outbox&PageNumber=1&PageSize=5 - - - 400 - application/problem+json;+charset=utf-8 72.5992ms
+2024-02-29 09:32:31.191 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - -
+2024-02-29 09:32:31.196 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:32:31.198 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:32:31.228 +00:00 [INF] Executed DbCommand (19ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+2024-02-29 09:32:31.235 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 09:32:31.243 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 09:32:31.252 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 49.8859ms
+2024-02-29 09:32:31.254 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:32:31.256 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 64.1675ms
+2024-02-29 09:50:57.102 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=b%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - -
+2024-02-29 09:50:57.108 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:50:57.110 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:50:57.141 +00:00 [INF] Executed DbCommand (12ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+2024-02-29 09:50:57.148 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 09:50:57.151 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 09:50:57.153 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 40.3469ms
+2024-02-29 09:50:57.161 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:50:57.162 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=b%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 61.1025ms
+2024-02-29 09:51:29.960 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Messages application/json 62
+2024-02-29 09:51:29.966 +00:00 [INF] CORS policy execution failed.
+2024-02-29 09:51:29.967 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 09:51:29.970 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 09:51:29.975 +00:00 [INF] Route matched with {action = "CreateMessage", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Models.DTO.MessageDto]] CreateMessage(Hexus.Models.DTO.CreateMessageDto) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:51:29.986 +00:00 [INF] a@gmail.com
+2024-02-29 09:51:29.997 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 09:51:30.003 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 09:51:30.254 +00:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (Size = 4000), @p6='?' (Size = 450), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Messages] ([Id], [Content], [DateRead], [MessageSent], [ReceiverId], [ReceiverUserName], [SenderId], [SenderUserName], [receiverDeleted], [senderDeleted])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2024-02-29 09:51:30.281 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.MessageDto'.
+2024-02-29 09:51:30.283 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.CreateMessage (Hexus) in 305.6373ms
+2024-02-29 09:51:30.298 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 09:51:30.300 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Messages application/json 62 - 200 - application/json;+charset=utf-8 339.8782ms
+2024-02-29 09:51:35.706 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Messages application/json 65
+2024-02-29 09:51:35.709 +00:00 [INF] CORS policy execution failed.
+2024-02-29 09:51:35.710 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 09:51:35.711 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 09:51:35.713 +00:00 [INF] Route matched with {action = "CreateMessage", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Models.DTO.MessageDto]] CreateMessage(Hexus.Models.DTO.CreateMessageDto) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:51:35.717 +00:00 [INF] a@gmail.com
+2024-02-29 09:51:35.722 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 09:51:35.727 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 09:51:35.741 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (Size = 4000), @p6='?' (Size = 450), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Messages] ([Id], [Content], [DateRead], [MessageSent], [ReceiverId], [ReceiverUserName], [SenderId], [SenderUserName], [receiverDeleted], [senderDeleted])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2024-02-29 09:51:35.745 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.MessageDto'.
+2024-02-29 09:51:35.747 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.CreateMessage (Hexus) in 31.0784ms
+2024-02-29 09:51:35.749 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 09:51:35.750 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Messages application/json 65 - 200 - application/json;+charset=utf-8 44.3837ms
+2024-02-29 09:51:41.562 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=b%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - -
+2024-02-29 09:51:41.566 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:51:41.568 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 09:51:41.585 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+2024-02-29 09:51:41.591 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 09:51:41.594 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 09:51:41.596 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 23.5374ms
+2024-02-29 09:51:41.598 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 09:51:41.599 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=b%40gmail.com&Container=Outbox&PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 37.5590ms
+2024-02-29 12:31:42.340 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-29 12:31:42.707 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-29 12:31:42.709 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-29 12:31:42.712 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-29 12:31:42.713 +00:00 [INF] Hosting environment: Development
+2024-02-29 12:31:42.714 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-29 12:31:45.382 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-29 12:31:45.855 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-29 12:31:45.855 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-29 12:31:45.860 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 484.7327ms
+2024-02-29 12:31:45.869 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 13.9616ms
+2024-02-29 12:31:45.955 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 100.7577ms
+2024-02-29 12:31:46.029 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-29 12:31:46.270 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 240.8044ms
+2024-02-29 12:32:10.886 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60
+2024-02-29 12:32:10.903 +00:00 [INF] CORS policy execution failed.
+2024-02-29 12:32:10.904 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 12:32:11.041 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 12:32:11.098 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-29 12:32:13.485 +00:00 [INF] Executed DbCommand (74ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 12:32:13.835 +00:00 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-02-29 12:32:13.905 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-02-29 12:32:13.923 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 2817.6003ms
+2024-02-29 12:32:13.925 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 12:32:13.942 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60 - 200 - application/json;+charset=utf-8 3055.3802ms
+2024-02-29 12:32:57.160 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - -
+2024-02-29 12:32:57.243 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:32:57.255 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:32:57.402 +00:00 [INF] Executed DbCommand (18ms) [Parameters=[@__currentUserName_0='?' (Size = 4000), @__receiverUserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Content], [m].[DateRead], [m].[MessageSent], [m].[ReceiverId], [m].[ReceiverUserName], [m].[SenderId], [m].[SenderUserName], [m].[receiverDeleted], [m].[senderDeleted], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+FROM [Messages] AS [m]
+INNER JOIN [AspNetUsers] AS [a] ON [m].[SenderId] = [a].[Id]
+INNER JOIN [AspNetUsers] AS [a0] ON [m].[ReceiverId] = [a0].[Id]
+WHERE ([m].[ReceiverUserName] = @__currentUserName_0 AND [m].[SenderUserName] = @__receiverUserName_1) OR ([m].[ReceiverUserName] = @__receiverUserName_1 AND [m].[SenderUserName] = @__currentUserName_0)
+ORDER BY [m].[MessageSent]
+2024-02-29 12:32:57.495 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:32:57.521 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 263.2862ms
+2024-02-29 12:32:57.523 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:32:57.526 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - - - 200 - application/json;+charset=utf-8 365.5587ms
+2024-02-29 12:33:40.130 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Messages application/json 60
+2024-02-29 12:33:40.141 +00:00 [INF] CORS policy execution failed.
+2024-02-29 12:33:40.143 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 12:33:40.150 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 12:33:40.155 +00:00 [INF] Route matched with {action = "CreateMessage", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Models.DTO.MessageDto]] CreateMessage(Hexus.Models.DTO.CreateMessageDto) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:33:40.175 +00:00 [INF] a@gmail.com
+2024-02-29 12:33:40.199 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 12:33:40.205 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 12:33:40.385 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (Size = 4000), @p6='?' (Size = 450), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Messages] ([Id], [Content], [DateRead], [MessageSent], [ReceiverId], [ReceiverUserName], [SenderId], [SenderUserName], [receiverDeleted], [senderDeleted])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2024-02-29 12:33:40.403 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.MessageDto'.
+2024-02-29 12:33:40.405 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.CreateMessage (Hexus) in 246.2976ms
+2024-02-29 12:33:40.407 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.CreateMessage (Hexus)'
+2024-02-29 12:33:40.409 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Messages application/json 60 - 200 - application/json;+charset=utf-8 279.1510ms
+2024-02-29 12:33:44.957 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - -
+2024-02-29 12:33:44.960 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:33:44.962 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:33:44.979 +00:00 [INF] Executed DbCommand (8ms) [Parameters=[@__currentUserName_0='?' (Size = 4000), @__receiverUserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Content], [m].[DateRead], [m].[MessageSent], [m].[ReceiverId], [m].[ReceiverUserName], [m].[SenderId], [m].[SenderUserName], [m].[receiverDeleted], [m].[senderDeleted], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+FROM [Messages] AS [m]
+INNER JOIN [AspNetUsers] AS [a] ON [m].[SenderId] = [a].[Id]
+INNER JOIN [AspNetUsers] AS [a0] ON [m].[ReceiverId] = [a0].[Id]
+WHERE ([m].[ReceiverUserName] = @__currentUserName_0 AND [m].[SenderUserName] = @__receiverUserName_1) OR ([m].[ReceiverUserName] = @__receiverUserName_1 AND [m].[SenderUserName] = @__currentUserName_0)
+ORDER BY [m].[MessageSent]
+2024-02-29 12:33:44.985 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:33:44.988 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 22.692ms
+2024-02-29 12:33:44.990 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:33:44.991 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - - - 200 - application/json;+charset=utf-8 34.1012ms
+2024-02-29 12:34:45.607 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=c%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - -
+2024-02-29 12:34:45.615 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:34:45.623 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:34:45.710 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+2024-02-29 12:34:45.732 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 12:34:45.745 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:34:45.748 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 121.9189ms
+2024-02-29 12:34:45.750 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:34:45.755 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=c%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - - - 200 - application/json;+charset=utf-8 145.4447ms
+2024-02-29 12:34:53.547 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=b%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - -
+2024-02-29 12:34:53.549 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:34:53.552 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:34:53.566 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+2024-02-29 12:34:53.574 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 12:34:53.578 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:34:53.580 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 24.4248ms
+2024-02-29 12:34:53.582 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:34:53.583 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=b%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - - - 200 - application/json;+charset=utf-8 36.6553ms
+2024-02-29 12:35:00.074 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - -
+2024-02-29 12:35:00.077 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:35:00.079 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:35:00.094 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+2024-02-29 12:35:00.112 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 12:35:00.116 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:35:00.120 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 37.3412ms
+2024-02-29 12:35:00.131 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:35:00.135 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - - - 200 - application/json;+charset=utf-8 60.5360ms
+2024-02-29 12:35:09.224 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=6 - -
+2024-02-29 12:35:09.239 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:35:09.244 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:35:09.260 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+2024-02-29 12:35:09.271 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 12:35:09.275 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:35:09.277 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 29.9612ms
+2024-02-29 12:35:09.280 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:35:09.281 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=6 - - - 200 - application/json;+charset=utf-8 57.1167ms
+2024-02-29 12:36:32.059 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - -
+2024-02-29 12:36:32.067 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:36:32.069 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:36:32.074 +00:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2024-02-29 12:36:32.077 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 3.6808ms
+2024-02-29 12:36:32.078 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:36:32.080 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - - - 401 - text/plain;+charset=utf-8 21.6954ms
+2024-02-29 12:36:43.248 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60
+2024-02-29 12:36:43.259 +00:00 [INF] CORS policy execution failed.
+2024-02-29 12:36:43.260 +00:00 [INF] Request origin https://localhost:7228 does not have permission to access the resource.
+2024-02-29 12:36:43.262 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 12:36:43.266 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-29 12:36:43.278 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-29 12:36:43.393 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-02-29 12:36:43.398 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-02-29 12:36:43.400 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 130.1911ms
+2024-02-29 12:36:43.401 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-29 12:36:43.403 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60 - 200 - application/json;+charset=utf-8 154.6413ms
+2024-02-29 12:37:33.749 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/a@gmail.com - -
+2024-02-29 12:37:33.762 +00:00 [INF] Failed to validate the token.
+System.ArgumentException: IDX12729: Unable to decode the header '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.Text.Json.JsonReaderException: '&' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at Microsoft.IdentityModel.Tokens.Json.JsonSerializerPrimitives.IsReaderAtTokenType(Utf8JsonReader& reader, JsonTokenType tokenType, Boolean advanceReader)
+   at System.IdentityModel.Tokens.Jwt.JwtHeader..ctor(String json)
+   at System.IdentityModel.Tokens.Jwt.JwtHeader.Base64UrlDeserialize(String base64UrlEncodedJsonString)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityToken.Decode(String[] tokenParts, String rawData)
+   --- End of inner exception stack trace ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityToken.Decode(String[] tokenParts, String rawData)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ReadJwtToken(String token)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.GetJwtSecurityTokenFromToken(String token, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2024-02-29 12:37:33.900 +00:00 [INF] Bearer was not authenticated. Failure message: IDX12729: Unable to decode the header '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2024-02-29 12:37:33.902 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:37:33.903 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:37:33.906 +00:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2024-02-29 12:37:33.908 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 2.5722ms
+2024-02-29 12:37:33.918 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:37:33.920 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/a@gmail.com - - - 401 - text/plain;+charset=utf-8 170.5492ms
+2024-02-29 12:37:41.539 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - -
+2024-02-29 12:37:41.541 +00:00 [INF] Failed to validate the token.
+System.ArgumentException: IDX12729: Unable to decode the header '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.Text.Json.JsonReaderException: '&' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at Microsoft.IdentityModel.Tokens.Json.JsonSerializerPrimitives.IsReaderAtTokenType(Utf8JsonReader& reader, JsonTokenType tokenType, Boolean advanceReader)
+   at System.IdentityModel.Tokens.Jwt.JwtHeader..ctor(String json)
+   at System.IdentityModel.Tokens.Jwt.JwtHeader.Base64UrlDeserialize(String base64UrlEncodedJsonString)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityToken.Decode(String[] tokenParts, String rawData)
+   --- End of inner exception stack trace ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityToken.Decode(String[] tokenParts, String rawData)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ReadJwtToken(String token)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.GetJwtSecurityTokenFromToken(String token, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2024-02-29 12:37:41.585 +00:00 [INF] Bearer was not authenticated. Failure message: IDX12729: Unable to decode the header '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2024-02-29 12:37:41.587 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:37:41.589 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:37:41.592 +00:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2024-02-29 12:37:41.594 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 2.3172ms
+2024-02-29 12:37:41.597 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:37:41.598 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - - - 401 - text/plain;+charset=utf-8 59.1179ms
+2024-02-29 12:38:14.709 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - -
+2024-02-29 12:38:14.719 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:38:14.722 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:38:14.738 +00:00 [INF] Executed DbCommand (11ms) [Parameters=[@__currentUserName_0='?' (Size = 4000), @__receiverUserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Content], [m].[DateRead], [m].[MessageSent], [m].[ReceiverId], [m].[ReceiverUserName], [m].[SenderId], [m].[SenderUserName], [m].[receiverDeleted], [m].[senderDeleted], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+FROM [Messages] AS [m]
+INNER JOIN [AspNetUsers] AS [a] ON [m].[SenderId] = [a].[Id]
+INNER JOIN [AspNetUsers] AS [a0] ON [m].[ReceiverId] = [a0].[Id]
+WHERE ([m].[ReceiverUserName] = @__currentUserName_0 AND [m].[SenderUserName] = @__receiverUserName_1) OR ([m].[ReceiverUserName] = @__receiverUserName_1 AND [m].[SenderUserName] = @__currentUserName_0)
+ORDER BY [m].[MessageSent]
+2024-02-29 12:38:14.742 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:38:14.744 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 20.1389ms
+2024-02-29 12:38:14.752 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:38:14.754 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - - - 200 - application/json;+charset=utf-8 45.6241ms
+2024-02-29 12:38:34.056 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/a@gmail.com - -
+2024-02-29 12:38:34.058 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:38:34.061 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:38:34.081 +00:00 [INF] Executed DbCommand (14ms) [Parameters=[@__currentUserName_0='?' (Size = 4000), @__receiverUserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Content], [m].[DateRead], [m].[MessageSent], [m].[ReceiverId], [m].[ReceiverUserName], [m].[SenderId], [m].[SenderUserName], [m].[receiverDeleted], [m].[senderDeleted], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+FROM [Messages] AS [m]
+INNER JOIN [AspNetUsers] AS [a] ON [m].[SenderId] = [a].[Id]
+INNER JOIN [AspNetUsers] AS [a0] ON [m].[ReceiverId] = [a0].[Id]
+WHERE ([m].[ReceiverUserName] = @__currentUserName_0 AND [m].[SenderUserName] = @__receiverUserName_1) OR ([m].[ReceiverUserName] = @__receiverUserName_1 AND [m].[SenderUserName] = @__currentUserName_0)
+ORDER BY [m].[MessageSent]
+2024-02-29 12:38:34.124 +00:00 [INF] Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p3='?' (DbType = Guid), @p2='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Messages] SET [DateRead] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [Messages] SET [DateRead] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+UPDATE [Messages] SET [DateRead] = @p4
+OUTPUT 1
+WHERE [Id] = @p5;
+2024-02-29 12:38:34.147 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:38:34.149 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 85.8082ms
+2024-02-29 12:38:34.152 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:38:34.153 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/a@gmail.com - - - 200 - application/json;+charset=utf-8 97.3111ms
+2024-02-29 12:38:55.235 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/c@gmail.com - -
+2024-02-29 12:38:55.237 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:38:55.239 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:38:55.294 +00:00 [INF] Executed DbCommand (50ms) [Parameters=[@__currentUserName_0='?' (Size = 4000), @__receiverUserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Content], [m].[DateRead], [m].[MessageSent], [m].[ReceiverId], [m].[ReceiverUserName], [m].[SenderId], [m].[SenderUserName], [m].[receiverDeleted], [m].[senderDeleted], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+FROM [Messages] AS [m]
+INNER JOIN [AspNetUsers] AS [a] ON [m].[SenderId] = [a].[Id]
+INNER JOIN [AspNetUsers] AS [a0] ON [m].[ReceiverId] = [a0].[Id]
+WHERE ([m].[ReceiverUserName] = @__currentUserName_0 AND [m].[SenderUserName] = @__receiverUserName_1) OR ([m].[ReceiverUserName] = @__receiverUserName_1 AND [m].[SenderUserName] = @__currentUserName_0)
+ORDER BY [m].[MessageSent]
+2024-02-29 12:38:55.299 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:38:55.301 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 59.0469ms
+2024-02-29 12:38:55.303 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:38:55.305 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/c@gmail.com - - - 200 - application/json;+charset=utf-8 69.9575ms
+2024-02-29 12:39:02.363 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - -
+2024-02-29 12:39:02.366 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:39:02.367 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:39:02.376 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__currentUserName_0='?' (Size = 4000), @__receiverUserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Content], [m].[DateRead], [m].[MessageSent], [m].[ReceiverId], [m].[ReceiverUserName], [m].[SenderId], [m].[SenderUserName], [m].[receiverDeleted], [m].[senderDeleted], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+FROM [Messages] AS [m]
+INNER JOIN [AspNetUsers] AS [a] ON [m].[SenderId] = [a].[Id]
+INNER JOIN [AspNetUsers] AS [a0] ON [m].[ReceiverId] = [a0].[Id]
+WHERE ([m].[ReceiverUserName] = @__currentUserName_0 AND [m].[SenderUserName] = @__receiverUserName_1) OR ([m].[ReceiverUserName] = @__receiverUserName_1 AND [m].[SenderUserName] = @__currentUserName_0)
+ORDER BY [m].[MessageSent]
+2024-02-29 12:39:02.381 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:39:02.386 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 14.9771ms
+2024-02-29 12:39:02.389 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:39:02.391 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/b@gmail.com - - - 200 - application/json;+charset=utf-8 27.1638ms
+2024-02-29 12:39:09.860 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages/thread/a@gmail.com - -
+2024-02-29 12:39:09.863 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:39:09.865 +00:00 [INF] Route matched with {action = "GetMessageThread", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Hexus.Models.DTO.MessageDto]]] GetMessageThread(System.String) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:39:09.896 +00:00 [INF] Executed DbCommand (26ms) [Parameters=[@__currentUserName_0='?' (Size = 4000), @__receiverUserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Content], [m].[DateRead], [m].[MessageSent], [m].[ReceiverId], [m].[ReceiverUserName], [m].[SenderId], [m].[SenderUserName], [m].[receiverDeleted], [m].[senderDeleted], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+FROM [Messages] AS [m]
+INNER JOIN [AspNetUsers] AS [a] ON [m].[SenderId] = [a].[Id]
+INNER JOIN [AspNetUsers] AS [a0] ON [m].[ReceiverId] = [a0].[Id]
+WHERE ([m].[ReceiverUserName] = @__currentUserName_0 AND [m].[SenderUserName] = @__receiverUserName_1) OR ([m].[ReceiverUserName] = @__receiverUserName_1 AND [m].[SenderUserName] = @__currentUserName_0)
+ORDER BY [m].[MessageSent]
+2024-02-29 12:39:09.905 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:39:09.907 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessageThread (Hexus) in 38.8362ms
+2024-02-29 12:39:09.909 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessageThread (Hexus)'
+2024-02-29 12:39:09.911 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages/thread/a@gmail.com - - - 200 - application/json;+charset=utf-8 50.5948ms
+2024-02-29 12:39:19.345 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=6 - -
+2024-02-29 12:39:19.349 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:39:19.355 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:39:19.376 +00:00 [INF] Executed DbCommand (12ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+2024-02-29 12:39:19.393 +00:00 [INF] Executed DbCommand (12ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[SenderUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 12:39:19.398 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:39:19.401 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 42.0001ms
+2024-02-29 12:39:19.404 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:39:19.406 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Outbox&PageNumber=1&PageSize=6 - - - 200 - application/json;+charset=utf-8 60.3507ms
+2024-02-29 12:39:28.311 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - -
+2024-02-29 12:39:28.313 +00:00 [INF] Executing endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:39:28.315 +00:00 [INF] Route matched with {action = "GetMessagesForUser", controller = "Messages"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Hexus.Helper.PagedList`1[Hexus.Models.DTO.MessageDto]]] GetMessagesForUser(Hexus.Helper.MessageParams) on controller Hexus.Controllers.MessagesController (Hexus).
+2024-02-29 12:39:28.359 +00:00 [INF] Executed DbCommand (38ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+2024-02-29 12:39:28.367 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__messageParams_Username_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[SenderId], [m].[SenderUserName], [m].[ReceiverId], [m].[ReceiverUserName], [m].[Content], [m].[DateRead], [m].[MessageSent]
+FROM [Messages] AS [m]
+WHERE [m].[ReceiverUserName] = @__messageParams_Username_0
+ORDER BY [m].[MessageSent] DESC
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-02-29 12:39:28.370 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Helper.PagedList`1[[Hexus.Models.DTO.MessageDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-29 12:39:28.372 +00:00 [INF] Executed action Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus) in 53.9249ms
+2024-02-29 12:39:28.374 +00:00 [INF] Executed endpoint 'Hexus.Controllers.MessagesController.GetMessagesForUser (Hexus)'
+2024-02-29 12:39:28.385 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Messages?Username=a%40gmail.com&Container=Inbox&PageNumber=1&PageSize=6 - - - 200 - application/json;+charset=utf-8 73.9523ms

@@ -1,0 +1,1162 @@
+2024-02-23 04:39:08.650 +00:00 [INF] Executed DbCommand (347ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Hexus];
+2024-02-23 04:39:08.847 +00:00 [INF] Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Hexus] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2024-02-23 04:39:08.880 +00:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 04:39:08.979 +00:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2024-02-23 04:39:08.982 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 04:39:09.006 +00:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 04:39:09.032 +00:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-02-23 04:39:09.058 +00:00 [INF] Applying migration '20240223043845_Initial migration'.
+2024-02-23 04:39:09.276 +00:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2024-02-23 04:39:09.290 +00:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2024-02-23 04:39:09.303 +00:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Server] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Server] PRIMARY KEY ([Id])
+);
+2024-02-23 04:39:09.310 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Text] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Text] PRIMARY KEY ([Id])
+);
+2024-02-23 04:39:09.347 +00:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Voice] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Voice] PRIMARY KEY ([Id])
+);
+2024-02-23 04:39:09.632 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 04:39:09.635 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 04:39:09.640 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 04:39:09.644 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 04:39:11.574 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 04:39:11.576 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Category] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [ServerId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Category] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Category_Server_ServerId] FOREIGN KEY ([ServerId]) REFERENCES [Server] ([Id])
+);
+2024-02-23 04:39:11.579 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Role] (
+    [RoleId] uniqueidentifier NOT NULL,
+    [RoleName] nvarchar(max) NOT NULL,
+    [ServerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Role] PRIMARY KEY ([RoleId]),
+    CONSTRAINT [FK_Role_Server_ServerId] FOREIGN KEY ([ServerId]) REFERENCES [Server] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 04:39:11.582 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ServerUser] (
+    [ServersId] uniqueidentifier NOT NULL,
+    [UsersId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_ServerUser] PRIMARY KEY ([ServersId], [UsersId]),
+    CONSTRAINT [FK_ServerUser_AspNetUsers_UsersId] FOREIGN KEY ([UsersId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ServerUser_Server_ServersId] FOREIGN KEY ([ServersId]) REFERENCES [Server] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 04:39:12.803 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Channel] (
+    [Id] uniqueidentifier NOT NULL,
+    [IsText] bit NOT NULL,
+    [VoiceId] uniqueidentifier NULL,
+    [TextId] uniqueidentifier NULL,
+    [CategoryId] uniqueidentifier NULL,
+    [ServerId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Channel] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Channel_Category_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
+    CONSTRAINT [FK_Channel_Server_ServerId] FOREIGN KEY ([ServerId]) REFERENCES [Server] ([Id]),
+    CONSTRAINT [FK_Channel_Text_TextId] FOREIGN KEY ([TextId]) REFERENCES [Text] ([Id]),
+    CONSTRAINT [FK_Channel_Voice_VoiceId] FOREIGN KEY ([VoiceId]) REFERENCES [Voice] ([Id])
+);
+2024-02-23 04:39:12.806 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [RoleUser] (
+    [RolesRoleId] uniqueidentifier NOT NULL,
+    [UsersId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_RoleUser] PRIMARY KEY ([RolesRoleId], [UsersId]),
+    CONSTRAINT [FK_RoleUser_AspNetUsers_UsersId] FOREIGN KEY ([UsersId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_RoleUser_Role_RolesRoleId] FOREIGN KEY ([RolesRoleId]) REFERENCES [Role] ([RoleId]) ON DELETE CASCADE
+);
+2024-02-23 04:39:12.870 +00:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'Name', N'NormalizedName') AND [object_id] = OBJECT_ID(N'[AspNetRoles]'))
+    SET IDENTITY_INSERT [AspNetRoles] ON;
+INSERT INTO [AspNetRoles] ([Id], [ConcurrencyStamp], [Name], [NormalizedName])
+VALUES (N'10538139-dbb7-40be-9119-5c2297e16e10', N'10538139-dbb7-40be-9119-5c2297e16e10', N'SuperAdmin', N'SUPERADMIN'),
+(N'987c7f4b-3a86-4c16-a2cf-a3f172b63175', N'987c7f4b-3a86-4c16-a2cf-a3f172b63175', N'Admin', N'ADMIN'),
+(N'b4e76a9c-e602-436c-a655-c028ff59e537', N'b4e76a9c-e602-436c-a655-c028ff59e537', N'Moderator', N'MODERATOR'),
+(N'b62bc63a-78f6-4fc3-b2ab-16b0244a222d', N'b62bc63a-78f6-4fc3-b2ab-16b0244a222d', N'User', N'USER');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'Name', N'NormalizedName') AND [object_id] = OBJECT_ID(N'[AspNetRoles]'))
+    SET IDENTITY_INSERT [AspNetRoles] OFF;
+2024-02-23 04:39:14.039 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+2024-02-23 04:39:14.045 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2024-02-23 04:39:14.046 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+2024-02-23 04:39:14.047 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+2024-02-23 04:39:14.048 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+2024-02-23 04:39:14.049 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+2024-02-23 04:39:14.050 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2024-02-23 04:39:14.051 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Category_ServerId] ON [Category] ([ServerId]);
+2024-02-23 04:39:14.052 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channel_CategoryId] ON [Channel] ([CategoryId]);
+2024-02-23 04:39:15.256 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channel_ServerId] ON [Channel] ([ServerId]);
+2024-02-23 04:39:15.257 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channel_TextId] ON [Channel] ([TextId]);
+2024-02-23 04:39:15.258 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channel_VoiceId] ON [Channel] ([VoiceId]);
+2024-02-23 04:39:15.259 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Role_ServerId] ON [Role] ([ServerId]);
+2024-02-23 04:39:15.260 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_RoleUser_UsersId] ON [RoleUser] ([UsersId]);
+2024-02-23 04:39:15.260 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ServerUser_UsersId] ON [ServerUser] ([UsersId]);
+2024-02-23 04:39:15.262 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240223043845_Initial migration', N'7.0.16');
+2024-02-23 05:14:40.165 +00:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 05:14:40.230 +00:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 05:14:40.233 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 05:14:40.235 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 05:14:40.249 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-02-23 05:14:40.268 +00:00 [INF] Applying migration '20240223051432_2nd migration'.
+2024-02-23 05:14:40.342 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [DM] (
+    [Id] uniqueidentifier NOT NULL,
+    [ReceiverId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_DM] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_DM_AspNetUsers_ReceiverId] FOREIGN KEY ([ReceiverId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 05:14:40.344 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DM_ReceiverId] ON [DM] ([ReceiverId]);
+2024-02-23 05:14:40.345 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240223051432_2nd migration', N'7.0.16');
+2024-02-23 05:17:45.500 +00:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 05:17:45.568 +00:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 05:17:45.571 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 05:17:45.572 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 05:17:45.587 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-02-23 05:17:45.607 +00:00 [INF] Applying migration '20240223051738_3rd migration'.
+2024-02-23 05:17:45.659 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240223051738_3rd migration', N'7.0.16');
+2024-02-23 06:11:14.396 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:11:15.633 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:11:15.634 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:11:15.637 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:11:15.639 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:11:15.640 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:11:16.977 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:11:17.769 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 797.1565ms
+2024-02-23 06:11:17.938 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:11:17.939 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:11:17.986 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 47.5916ms
+2024-02-23 06:11:18.105 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 165.9636ms
+2024-02-23 06:11:18.330 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:11:18.658 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 327.5161ms
+2024-02-23 06:11:51.112 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 106
+2024-02-23 06:11:51.143 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:11:52.314 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:11:52.372 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:11:53.041 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 662.2023ms
+2024-02-23 06:11:53.049 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:11:53.053 +00:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'AutoMapper.IMapper' while attempting to activate 'Hexus.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-23 06:11:53.270 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 106 - 500 - text/plain;+charset=utf-8 2158.3076ms
+2024-02-23 06:17:54.135 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:17:54.591 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:17:54.593 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:17:54.597 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:17:54.598 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:17:54.599 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:17:56.713 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:17:57.270 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 560.8267ms
+2024-02-23 06:17:57.338 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:17:57.349 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 11.7275ms
+2024-02-23 06:17:57.387 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:17:57.471 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 83.5519ms
+2024-02-23 06:17:57.707 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:17:57.928 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 220.2890ms
+2024-02-23 06:18:37.590 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89
+2024-02-23 06:18:37.605 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:18:37.695 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:18:37.744 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:18:37.957 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 200.5332ms
+2024-02-23 06:18:37.974 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:18:37.981 +00:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'AutoMapper.IMapper' while attempting to activate 'Hexus.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-23 06:18:38.044 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89 - 500 - text/plain;+charset=utf-8 453.7967ms
+2024-02-23 06:27:03.689 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:27:04.072 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:27:04.075 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:27:04.079 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:27:04.080 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:27:04.081 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:27:04.749 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:27:05.469 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 724.2780ms
+2024-02-23 06:27:05.482 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:27:05.482 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:27:05.519 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 36.0066ms
+2024-02-23 06:27:05.589 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 106.9383ms
+2024-02-23 06:27:05.691 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:27:05.950 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 258.4963ms
+2024-02-23 06:27:36.395 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89
+2024-02-23 06:27:36.415 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:27:36.527 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:27:36.584 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:27:36.807 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 216.3754ms
+2024-02-23 06:27:36.812 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:27:36.816 +00:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'AutoMapper.IMapper' while attempting to activate 'Hexus.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-23 06:27:36.866 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89 - 500 - text/plain;+charset=utf-8 470.9522ms
+2024-02-23 06:28:17.356 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:28:17.919 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:28:17.948 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:28:17.953 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:28:17.955 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:28:17.956 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:28:20.407 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:28:21.103 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 698.2792ms
+2024-02-23 06:28:21.109 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:28:21.110 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:28:21.127 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 18.0355ms
+2024-02-23 06:28:21.278 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 167.4435ms
+2024-02-23 06:28:21.375 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:28:21.606 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 231.4037ms
+2024-02-23 06:28:47.990 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89
+2024-02-23 06:28:48.006 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:28:48.124 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:28:48.190 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:28:48.426 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 228.9511ms
+2024-02-23 06:28:48.432 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:28:48.435 +00:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'AutoMapper.IMapper' while attempting to activate 'Hexus.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-23 06:28:48.508 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89 - 500 - text/plain;+charset=utf-8 517.9744ms
+2024-02-23 06:30:20.916 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:30:21.377 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:30:21.379 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:30:21.383 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:30:21.385 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:30:21.386 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:30:24.141 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:30:24.811 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:30:24.811 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:30:24.811 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 676.2677ms
+2024-02-23 06:30:24.832 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 21.5873ms
+2024-02-23 06:30:24.934 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 123.2843ms
+2024-02-23 06:30:25.028 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:30:25.262 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 233.4759ms
+2024-02-23 06:30:47.496 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89
+2024-02-23 06:30:47.515 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:30:47.625 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:30:47.678 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:30:50.926 +00:00 [INF] Executed DbCommand (94ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 06:30:51.164 +00:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:30:51.416 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2024-02-23 06:30:51.452 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:30:51.523 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2024-02-23 06:30:51.541 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:30:51.563 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:30:51.630 +00:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2024-02-23 06:30:51.652 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 06:30:51.668 +00:00 [INF] Executing CreatedAtActionResult, writing value of type 'Hexus.Models.Domain.User'.
+2024-02-23 06:30:51.741 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 4054.9002ms
+2024-02-23 06:30:51.744 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:30:51.760 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89 - 201 - application/json;+charset=utf-8 4264.1180ms
+2024-02-23 06:31:25.242 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Auth/46a35adf-25dd-4110-92fb-f3f2bfb988b8 - -
+2024-02-23 06:31:25.252 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.GetById (Hexus)'
+2024-02-23 06:31:25.262 +00:00 [INF] Route matched with {action = "GetById", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(System.String) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:31:25.357 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2024-02-23 06:31:25.363 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.Domain.User'.
+2024-02-23 06:31:25.365 +00:00 [INF] Executed action Hexus.Controllers.AuthController.GetById (Hexus) in 100.242ms
+2024-02-23 06:31:25.374 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.GetById (Hexus)'
+2024-02-23 06:31:25.377 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Auth/46a35adf-25dd-4110-92fb-f3f2bfb988b8 - - - 200 - application/json;+charset=utf-8 135.1344ms
+2024-02-23 06:35:46.312 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:35:46.746 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:35:46.749 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:35:46.755 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:35:46.756 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:35:46.758 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:35:47.440 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:35:48.049 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 614.3620ms
+2024-02-23 06:35:48.074 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:35:48.076 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:35:48.098 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 22.0973ms
+2024-02-23 06:35:48.191 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 117.4309ms
+2024-02-23 06:35:48.282 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:35:48.523 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 240.4173ms
+2024-02-23 06:36:12.573 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 90
+2024-02-23 06:36:12.589 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:36:12.695 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:36:12.735 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:36:14.997 +00:00 [INF] Executed DbCommand (64ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 06:36:15.192 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:36:15.468 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2024-02-23 06:36:15.511 +00:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:36:15.592 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2024-02-23 06:36:15.608 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:36:15.634 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:36:15.697 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2024-02-23 06:36:15.890 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 3146.7812ms
+2024-02-23 06:36:15.893 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:36:15.897 +00:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+IdentityResult -> UserDto
+Microsoft.AspNetCore.Identity.IdentityResult -> Hexus.Models.DTO.UserDto
+   at lambda_method256(Closure, Object, UserDto, ResolutionContext)
+   at Hexus.Controllers.AuthController.Register(RegisterUserRequestDto registerRequestDto) in C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus\Controllers\AuthController.cs:line 66
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-23 06:36:15.975 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 90 - 500 - text/plain;+charset=utf-8 3401.8928ms
+2024-02-23 06:36:54.907 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:36:55.174 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:36:55.177 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:36:55.187 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:36:55.189 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:36:55.190 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:36:57.920 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:36:58.456 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 541.9301ms
+2024-02-23 06:36:58.542 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:36:58.542 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:36:58.561 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 14.4767ms
+2024-02-23 06:36:58.624 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 81.6064ms
+2024-02-23 06:36:58.704 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:36:58.938 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 234.1169ms
+2024-02-23 06:37:25.617 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89
+2024-02-23 06:37:25.632 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:37:25.724 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:37:25.765 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:37:27.802 +00:00 [INF] Executed DbCommand (65ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 06:37:27.971 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:37:28.202 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2024-02-23 06:37:57.129 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:37:57.188 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2024-02-23 06:37:57.202 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:37:57.232 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:37:57.294 +00:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2024-02-23 06:38:55.404 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 06:38:55.703 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 06:38:55.705 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 06:38:55.708 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 06:38:55.709 +00:00 [INF] Hosting environment: Development
+2024-02-23 06:38:55.710 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 06:38:58.219 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 06:38:58.769 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 557.5193ms
+2024-02-23 06:38:58.802 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 06:38:58.805 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 06:38:58.830 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 28.6671ms
+2024-02-23 06:38:58.913 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 107.6889ms
+2024-02-23 06:38:58.999 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 06:38:59.238 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 238.3211ms
+2024-02-23 06:39:19.591 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89
+2024-02-23 06:39:19.600 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:39:19.743 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:39:19.782 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:39:22.150 +00:00 [INF] Executed DbCommand (62ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 06:39:22.316 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-02-23 06:39:22.329 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 2538.6202ms
+2024-02-23 06:39:22.332 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:39:22.360 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89 - 400 - text/plain;+charset=utf-8 2768.8709ms
+2024-02-23 06:39:33.463 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89
+2024-02-23 06:39:33.470 +00:00 [INF] CORS policy execution successful.
+2024-02-23 06:39:33.476 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:39:33.485 +00:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Hexus.Models.DTO.RegisterUserRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 06:39:33.617 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 06:39:33.782 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:39:33.934 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2024-02-23 06:39:39.875 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:39:39.927 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2024-02-23 06:39:39.938 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-02-23 06:39:39.963 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-02-23 06:39:40.025 +00:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2024-02-23 06:39:40.049 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 06:39:43.503 +00:00 [INF] Executing CreatedAtActionResult, writing value of type 'Hexus.Models.DTO.UserDto'.
+2024-02-23 06:39:43.560 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Register (Hexus) in 10071.8222ms
+2024-02-23 06:39:43.563 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Register (Hexus)'
+2024-02-23 06:39:43.565 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Register application/json 89 - 201 - application/json;+charset=utf-8 10101.2513ms
+2024-02-23 09:32:54.614 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 09:32:55.010 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 09:32:55.011 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 09:32:55.014 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 09:32:55.016 +00:00 [INF] Hosting environment: Development
+2024-02-23 09:32:55.017 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 09:32:57.664 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 09:32:58.342 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 682.0981ms
+2024-02-23 09:32:58.374 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 09:32:58.374 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 09:32:58.385 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 10.3302ms
+2024-02-23 09:32:58.455 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 80.4883ms
+2024-02-23 09:32:58.539 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 09:32:58.772 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 233.3868ms
+2024-02-23 09:33:30.616 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Auth/46a35adf-25dd-4110-92fb-f3f2bfb988b8 - -
+2024-02-23 09:33:30.745 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.GetById (Hexus)'
+2024-02-23 09:33:30.786 +00:00 [INF] Route matched with {action = "GetById", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(System.String) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 09:33:31.126 +00:00 [INF] Executed action Hexus.Controllers.AuthController.GetById (Hexus) in 333.3302ms
+2024-02-23 09:33:31.132 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.GetById (Hexus)'
+2024-02-23 09:33:31.138 +00:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Hexus.Repositories.Interface.ITokenRepository' while attempting to activate 'Hexus.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-23 09:33:31.182 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Auth/46a35adf-25dd-4110-92fb-f3f2bfb988b8 - - - 500 - text/plain;+charset=utf-8 566.5125ms
+2024-02-23 09:36:08.354 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 09:36:08.721 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 09:36:08.723 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 09:36:08.726 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 09:36:08.727 +00:00 [INF] Hosting environment: Development
+2024-02-23 09:36:08.728 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 09:36:09.352 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 09:36:10.261 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 915.4214ms
+2024-02-23 09:36:10.296 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 09:36:10.309 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 09:36:10.333 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 23.8747ms
+2024-02-23 09:36:10.449 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 152.2894ms
+2024-02-23 09:36:10.538 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 09:36:10.801 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 263.5680ms
+2024-02-23 09:36:32.785 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/Auth/46a35adf-25dd-4110-92fb-f3f2bfb988b8 - -
+2024-02-23 09:36:32.902 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.GetById (Hexus)'
+2024-02-23 09:36:32.944 +00:00 [INF] Route matched with {action = "GetById", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(System.String) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 09:36:35.195 +00:00 [INF] Executed DbCommand (73ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2024-02-23 09:36:35.367 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.UserDto'.
+2024-02-23 09:36:35.407 +00:00 [INF] Executed action Hexus.Controllers.AuthController.GetById (Hexus) in 2456.596ms
+2024-02-23 09:36:35.410 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.GetById (Hexus)'
+2024-02-23 09:36:35.424 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/Auth/46a35adf-25dd-4110-92fb-f3f2bfb988b8 - - - 200 - application/json;+charset=utf-8 2638.4008ms
+2024-02-23 09:37:36.113 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60
+2024-02-23 09:37:36.124 +00:00 [INF] CORS policy execution successful.
+2024-02-23 09:37:36.129 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-23 09:37:36.137 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-02-23 09:37:36.281 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-02-23 09:37:36.495 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-02-23 09:37:36.623 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-02-23 09:37:36.632 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 492.5285ms
+2024-02-23 09:37:36.634 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-02-23 09:37:36.636 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 60 - 200 - application/json;+charset=utf-8 522.7152ms
+2024-02-23 10:05:41.008 +00:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 10:05:41.075 +00:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 10:05:41.078 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 10:05:41.079 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 10:05:41.101 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-02-23 10:05:41.119 +00:00 [INF] Applying migration '20240223100530_4th migration'.
+2024-02-23 10:05:41.197 +00:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Category] DROP CONSTRAINT [FK_Category_Server_ServerId];
+2024-02-23 10:05:41.201 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Channel] DROP CONSTRAINT [FK_Channel_Category_CategoryId];
+2024-02-23 10:05:41.203 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Channel] DROP CONSTRAINT [FK_Channel_Server_ServerId];
+2024-02-23 10:05:41.204 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Channel] DROP CONSTRAINT [FK_Channel_Text_TextId];
+2024-02-23 10:05:41.206 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Channel] DROP CONSTRAINT [FK_Channel_Voice_VoiceId];
+2024-02-23 10:05:41.209 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Role] DROP CONSTRAINT [FK_Role_Server_ServerId];
+2024-02-23 10:05:41.212 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [RoleUser] DROP CONSTRAINT [FK_RoleUser_Role_RolesRoleId];
+2024-02-23 10:05:41.217 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Voice] DROP CONSTRAINT [PK_Voice];
+2024-02-23 10:05:41.220 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Text] DROP CONSTRAINT [PK_Text];
+2024-02-23 10:05:41.224 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Role] DROP CONSTRAINT [PK_Role];
+2024-02-23 10:05:41.228 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Channel] DROP CONSTRAINT [PK_Channel];
+2024-02-23 10:05:41.231 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Category] DROP CONSTRAINT [PK_Category];
+2024-02-23 10:05:42.008 +00:00 [INF] Executed DbCommand (562ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[Voice]', N'Voices';
+2024-02-23 10:05:42.022 +00:00 [ERR] Failed executing DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[Text]', N'Texts';
+2024-02-23 10:10:08.560 +00:00 [INF] Executed DbCommand (201ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Hexus];
+2024-02-23 10:10:08.660 +00:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Hexus] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2024-02-23 10:10:08.684 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 10:10:08.766 +00:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2024-02-23 10:10:08.768 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 10:10:08.786 +00:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 10:10:08.805 +00:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-02-23 10:10:08.828 +00:00 [INF] Applying migration '20240223100959_1st migration'.
+2024-02-23 10:10:08.955 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2024-02-23 10:10:08.957 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2024-02-23 10:10:08.959 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Server] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Server] PRIMARY KEY ([Id])
+);
+2024-02-23 10:10:08.961 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Texts] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Texts] PRIMARY KEY ([Id])
+);
+2024-02-23 10:10:09.315 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Voices] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Voices] PRIMARY KEY ([Id])
+);
+2024-02-23 10:10:09.319 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:09.322 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:09.328 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:09.331 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:10.767 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:10.770 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [DM] (
+    [Id] uniqueidentifier NOT NULL,
+    [ReceiverId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_DM] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_DM_AspNetUsers_ReceiverId] FOREIGN KEY ([ReceiverId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:10.773 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [ServerId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Categories_Server_ServerId] FOREIGN KEY ([ServerId]) REFERENCES [Server] ([Id])
+);
+2024-02-23 10:10:10.775 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [RoleId] uniqueidentifier NOT NULL,
+    [RoleName] nvarchar(max) NOT NULL,
+    [ServerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([RoleId]),
+    CONSTRAINT [FK_Roles_Server_ServerId] FOREIGN KEY ([ServerId]) REFERENCES [Server] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:11.930 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ServerUser] (
+    [ServersId] uniqueidentifier NOT NULL,
+    [UsersId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_ServerUser] PRIMARY KEY ([ServersId], [UsersId]),
+    CONSTRAINT [FK_ServerUser_AspNetUsers_UsersId] FOREIGN KEY ([UsersId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ServerUser_Server_ServersId] FOREIGN KEY ([ServersId]) REFERENCES [Server] ([Id]) ON DELETE CASCADE
+);
+2024-02-23 10:10:11.933 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Channels] (
+    [Id] uniqueidentifier NOT NULL,
+    [IsText] bit NOT NULL,
+    [VoiceId] uniqueidentifier NULL,
+    [TextId] uniqueidentifier NULL,
+    [CategoryId] uniqueidentifier NULL,
+    [ServerId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Channels] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Channels_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]),
+    CONSTRAINT [FK_Channels_Server_ServerId] FOREIGN KEY ([ServerId]) REFERENCES [Server] ([Id]),
+    CONSTRAINT [FK_Channels_Texts_TextId] FOREIGN KEY ([TextId]) REFERENCES [Texts] ([Id]),
+    CONSTRAINT [FK_Channels_Voices_VoiceId] FOREIGN KEY ([VoiceId]) REFERENCES [Voices] ([Id])
+);
+2024-02-23 10:10:11.937 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [RoleUser] (
+    [RolesRoleId] uniqueidentifier NOT NULL,
+    [UsersId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_RoleUser] PRIMARY KEY ([RolesRoleId], [UsersId]),
+    CONSTRAINT [FK_RoleUser_AspNetUsers_UsersId] FOREIGN KEY ([UsersId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_RoleUser_Roles_RolesRoleId] FOREIGN KEY ([RolesRoleId]) REFERENCES [Roles] ([RoleId]) ON DELETE CASCADE
+);
+2024-02-23 10:10:13.016 +00:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'Name', N'NormalizedName') AND [object_id] = OBJECT_ID(N'[AspNetRoles]'))
+    SET IDENTITY_INSERT [AspNetRoles] ON;
+INSERT INTO [AspNetRoles] ([Id], [ConcurrencyStamp], [Name], [NormalizedName])
+VALUES (N'10538139-dbb7-40be-9119-5c2297e16e10', N'10538139-dbb7-40be-9119-5c2297e16e10', N'SuperAdmin', N'SUPERADMIN'),
+(N'987c7f4b-3a86-4c16-a2cf-a3f172b63175', N'987c7f4b-3a86-4c16-a2cf-a3f172b63175', N'Admin', N'ADMIN'),
+(N'b4e76a9c-e602-436c-a655-c028ff59e537', N'b4e76a9c-e602-436c-a655-c028ff59e537', N'Moderator', N'MODERATOR'),
+(N'b62bc63a-78f6-4fc3-b2ab-16b0244a222d', N'b62bc63a-78f6-4fc3-b2ab-16b0244a222d', N'User', N'USER');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ConcurrencyStamp', N'Name', N'NormalizedName') AND [object_id] = OBJECT_ID(N'[AspNetRoles]'))
+    SET IDENTITY_INSERT [AspNetRoles] OFF;
+2024-02-23 10:10:13.018 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+2024-02-23 10:10:13.022 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2024-02-23 10:10:13.023 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+2024-02-23 10:10:13.024 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+2024-02-23 10:10:13.025 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+2024-02-23 10:10:14.145 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+2024-02-23 10:10:14.147 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2024-02-23 10:10:14.148 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Categories_ServerId] ON [Categories] ([ServerId]);
+2024-02-23 10:10:14.149 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channels_CategoryId] ON [Channels] ([CategoryId]);
+2024-02-23 10:10:14.150 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channels_ServerId] ON [Channels] ([ServerId]);
+2024-02-23 10:10:14.151 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channels_TextId] ON [Channels] ([TextId]);
+2024-02-23 10:10:14.152 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Channels_VoiceId] ON [Channels] ([VoiceId]);
+2024-02-23 10:10:14.153 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DM_ReceiverId] ON [DM] ([ReceiverId]);
+2024-02-23 10:10:14.154 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Roles_ServerId] ON [Roles] ([ServerId]);
+2024-02-23 10:10:14.154 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_RoleUser_UsersId] ON [RoleUser] ([UsersId]);
+2024-02-23 10:10:14.155 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ServerUser_UsersId] ON [ServerUser] ([UsersId]);
+2024-02-23 10:10:14.157 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240223100959_1st migration', N'7.0.16');
+2024-02-23 11:18:34.488 +00:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 11:18:34.553 +00:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 11:18:34.556 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-02-23 11:18:34.557 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-02-23 11:18:34.575 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-02-23 11:18:34.593 +00:00 [INF] Applying migration '20240223111819_2nd migration'.
+2024-02-23 11:18:34.678 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [DM] DROP CONSTRAINT [FK_DM_AspNetUsers_ReceiverId];
+2024-02-23 11:18:34.684 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [DM] DROP CONSTRAINT [PK_DM];
+2024-02-23 11:18:34.686 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_DM_ReceiverId] ON [DM];
+2024-02-23 11:18:34.747 +00:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[DM]') AND [c].[name] = N'ReceiverId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [DM] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [DM] DROP COLUMN [ReceiverId];
+2024-02-23 11:18:35.111 +00:00 [INF] Executed DbCommand (364ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[DM]', N'DMs';
+2024-02-23 11:18:35.114 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [DMs] ADD [Message] nvarchar(max) NOT NULL DEFAULT N'';
+2024-02-23 11:18:35.118 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [DMs] ADD CONSTRAINT [PK_DMs] PRIMARY KEY ([Id]);
+2024-02-23 11:18:35.125 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Friends] (
+    [Id] uniqueidentifier NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [DMId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Friends] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Friends_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Friends_DMs_DMId] FOREIGN KEY ([DMId]) REFERENCES [DMs] ([Id])
+);
+2024-02-23 11:18:35.126 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Friends_DMId] ON [Friends] ([DMId]);
+2024-02-23 11:18:35.127 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Friends_UserId] ON [Friends] ([UserId]);
+2024-02-23 11:18:35.129 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240223111819_2nd migration', N'7.0.16');
+2024-02-23 12:38:35.389 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 12:38:36.271 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 12:38:36.273 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 12:38:36.276 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 12:38:36.278 +00:00 [INF] Hosting environment: Development
+2024-02-23 12:38:36.279 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 12:38:37.094 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 12:38:37.805 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 707.4215ms
+2024-02-23 12:38:37.826 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 12:38:37.826 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 12:38:37.850 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 24.1529ms
+2024-02-23 12:38:37.920 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 94.3683ms
+2024-02-23 12:38:38.036 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 12:38:38.405 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 369.5544ms
+2024-02-23 12:39:01.266 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/DM application/json 29
+2024-02-23 12:39:01.284 +00:00 [INF] CORS policy execution successful.
+2024-02-23 12:39:01.477 +00:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (User)
+2024-02-23 12:39:01.483 +00:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-02-23 12:39:01.486 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/DM application/json 29 - 401 0 - 219.6973ms
+2024-02-23 12:39:39.276 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 12:39:39.730 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 12:39:39.732 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 12:39:39.736 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 12:39:39.737 +00:00 [INF] Hosting environment: Development
+2024-02-23 12:39:39.738 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 12:39:41.845 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 12:39:42.446 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 605.5727ms
+2024-02-23 12:39:42.478 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 12:39:42.478 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 12:39:42.516 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 37.3191ms
+2024-02-23 12:39:42.599 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 120.4011ms
+2024-02-23 12:39:42.688 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 12:39:42.965 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 277.0655ms
+2024-02-23 12:39:58.552 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/DM application/json 29
+2024-02-23 12:39:58.567 +00:00 [INF] CORS policy execution successful.
+2024-02-23 12:39:58.681 +00:00 [INF] Executing endpoint 'Hexus.Controllers.DMController.Create (Hexus)'
+2024-02-23 12:39:58.721 +00:00 [INF] Route matched with {action = "Create", controller = "DM"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(Hexus.Models.DTO.AddDMRequestDto) on controller Hexus.Controllers.DMController (Hexus).
+2024-02-23 12:39:59.506 +00:00 [INF] Executed action Hexus.Controllers.DMController.Create (Hexus) in 775.1799ms
+2024-02-23 12:39:59.511 +00:00 [INF] Executed endpoint 'Hexus.Controllers.DMController.Create (Hexus)'
+2024-02-23 12:39:59.514 +00:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+AddDMRequestDto -> DM
+Hexus.Models.DTO.AddDMRequestDto -> Hexus.Models.Domain.DM
+   at lambda_method27(Closure, Object, DM, ResolutionContext)
+   at Hexus.Controllers.DMController.Create(AddDMRequestDto addDMRequestDto) in C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus\Controllers\DMController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-23 12:39:59.695 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/DM application/json 29 - 500 - text/plain;+charset=utf-8 1143.4451ms
+2024-02-23 12:43:47.736 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-02-23 12:43:48.126 +00:00 [INF] Now listening on: https://localhost:7228
+2024-02-23 12:43:48.128 +00:00 [INF] Now listening on: http://localhost:5182
+2024-02-23 12:43:48.131 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-23 12:43:48.133 +00:00 [INF] Hosting environment: Development
+2024-02-23 12:43:48.137 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-02-23 12:43:51.597 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-02-23 12:43:52.200 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 615.2566ms
+2024-02-23 12:43:52.201 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-02-23 12:43:52.201 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-02-23 12:43:52.220 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 19.5513ms
+2024-02-23 12:43:52.323 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 122.0262ms
+2024-02-23 12:43:52.411 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-02-23 12:43:52.767 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 355.6310ms
+2024-02-23 12:44:27.535 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/DM application/json 29
+2024-02-23 12:44:27.546 +00:00 [INF] CORS policy execution successful.
+2024-02-23 12:44:27.651 +00:00 [INF] Executing endpoint 'Hexus.Controllers.DMController.Create (Hexus)'
+2024-02-23 12:44:27.701 +00:00 [INF] Route matched with {action = "Create", controller = "DM"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(Hexus.Models.DTO.AddDMRequestDto) on controller Hexus.Controllers.DMController (Hexus).
+2024-02-23 12:44:30.607 +00:00 [INF] Executed DbCommand (97ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DMs] ([Id], [Message])
+VALUES (@p0, @p1);
+2024-02-23 12:44:30.685 +00:00 [INF] Executing CreatedAtActionResult, writing value of type 'Hexus.Models.DTO.DMDto'.
+2024-02-23 12:44:30.751 +00:00 [INF] Executed action Hexus.Controllers.DMController.Create (Hexus) in 3041.8453ms
+2024-02-23 12:44:30.755 +00:00 [INF] Executed endpoint 'Hexus.Controllers.DMController.Create (Hexus)'
+2024-02-23 12:44:30.770 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/DM application/json 29 - 201 - application/json;+charset=utf-8 3240.8251ms
+2024-02-23 12:44:39.691 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/api/DM - -
+2024-02-23 12:44:39.700 +00:00 [INF] Executing endpoint 'Hexus.Controllers.DMController.GetAll (Hexus)'
+2024-02-23 12:44:39.708 +00:00 [INF] Route matched with {action = "GetAll", controller = "DM"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller Hexus.Controllers.DMController (Hexus).
+2024-02-23 12:44:40.067 +00:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[Message]
+FROM [DMs] AS [d]
+2024-02-23 12:44:40.108 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Hexus.Models.DTO.DMDto, Hexus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-02-23 12:44:40.112 +00:00 [INF] Executed action Hexus.Controllers.DMController.GetAll (Hexus) in 398.6098ms
+2024-02-23 12:44:40.115 +00:00 [INF] Executed endpoint 'Hexus.Controllers.DMController.GetAll (Hexus)'
+2024-02-23 12:44:40.117 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/api/DM - - - 200 - application/json;+charset=utf-8 425.8249ms

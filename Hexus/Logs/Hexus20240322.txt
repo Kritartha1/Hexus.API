@@ -1,0 +1,110 @@
+2024-03-22 05:19:34.086 +00:00 [INF] User profile is available. Using 'C:\Users\Nath\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 05:19:35.061 +00:00 [INF] Now listening on: https://localhost:7228
+2024-03-22 05:19:35.063 +00:00 [INF] Now listening on: http://localhost:5182
+2024-03-22 05:19:35.066 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 05:19:35.068 +00:00 [INF] Hosting environment: Development
+2024-03-22 05:19:35.069 +00:00 [INF] Content root path: C:\Users\Nath\source\repos\Hexus.API\Hexus\Hexus
+2024-03-22 05:19:37.099 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/index.html - -
+2024-03-22 05:19:37.667 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/index.html - - - 200 - text/html;charset=utf-8 571.1367ms
+2024-03-22 05:19:37.701 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 05:19:37.701 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/_vs/browserLink - -
+2024-03-22 05:19:37.724 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_framework/aspnetcore-browser-refresh.js - - - 200 13746 application/javascript;+charset=utf-8 21.8011ms
+2024-03-22 05:19:37.790 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 88.6611ms
+2024-03-22 05:19:37.912 +00:00 [INF] Request starting HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - -
+2024-03-22 05:19:38.154 +00:00 [INF] Request finished HTTP/2 GET https://localhost:7228/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 241.6014ms
+2024-03-22 05:19:50.521 +00:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7228/api/Auth/Login - -
+2024-03-22 05:19:50.530 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:50.535 +00:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7228/api/Auth/Login - - - 204 - - 14.1648ms
+2024-03-22 05:19:50.538 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 51
+2024-03-22 05:19:50.541 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:50.772 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-03-22 05:19:50.811 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-03-22 05:19:53.613 +00:00 [INF] Executed DbCommand (62ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-03-22 05:19:53.993 +00:00 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-03-22 05:19:54.102 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 51
+2024-03-22 05:19:54.102 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-03-22 05:19:54.104 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:54.108 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-03-22 05:19:54.110 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-03-22 05:19:54.141 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 3312.7761ms
+2024-03-22 05:19:54.144 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-03-22 05:19:54.157 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 51 - 200 - application/json;+charset=utf-8 3619.6276ms
+2024-03-22 05:19:54.199 +00:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - -
+2024-03-22 05:19:54.201 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:54.234 +00:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - - - 204 - - 35.0471ms
+2024-03-22 05:19:54.248 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - 0
+2024-03-22 05:19:54.249 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:54.269 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-03-22 05:19:54.373 +00:00 [INF] Executing endpoint 'hubs/presence/negotiate'
+2024-03-22 05:19:54.388 +00:00 [INF] Executed endpoint 'hubs/presence/negotiate'
+2024-03-22 05:19:54.391 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 142.6188ms
+2024-03-22 05:19:54.395 +00:00 [INF] Request starting HTTP/2 CONNECT https://localhost:7228/hubs/presence?id=wY1oV92c8i5DTQJXZ_JhaA&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhQGdtYWlsLmNvbSIsIm5hbWVpZCI6ImFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTcxMTA4NTY5NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjgifQ.OVAtqYxP9JugpceGweTn58SOr23Dxs7xrDZtmJBX1ec - -
+2024-03-22 05:19:54.397 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:54.405 +00:00 [INF] Executing endpoint 'hubs/presence'
+2024-03-22 05:19:54.447 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-03-22 05:19:54.452 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-03-22 05:19:54.455 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 341.9077ms
+2024-03-22 05:19:54.457 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-03-22 05:19:54.459 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 51 - 200 - application/json;+charset=utf-8 356.7428ms
+2024-03-22 05:19:54.466 +00:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - -
+2024-03-22 05:19:54.468 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:54.469 +00:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - - - 204 - - 2.8595ms
+2024-03-22 05:19:54.471 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - 0
+2024-03-22 05:19:54.472 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:54.475 +00:00 [INF] Executing endpoint 'hubs/presence/negotiate'
+2024-03-22 05:19:54.477 +00:00 [INF] Executed endpoint 'hubs/presence/negotiate'
+2024-03-22 05:19:54.479 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 8.3685ms
+2024-03-22 05:19:54.483 +00:00 [INF] Request starting HTTP/2 CONNECT https://localhost:7228/hubs/presence?id=PsPwMjFW6tQ-laxFs1XZ_g&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhQGdtYWlsLmNvbSIsIm5hbWVpZCI6ImFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTcxMTA4NTY5NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjgifQ.OVAtqYxP9JugpceGweTn58SOr23Dxs7xrDZtmJBX1ec - -
+2024-03-22 05:19:54.485 +00:00 [INF] CORS policy execution successful.
+2024-03-22 05:19:54.486 +00:00 [INF] Executing endpoint 'hubs/presence'
+2024-03-22 05:32:33.804 +00:00 [INF] Executed endpoint 'hubs/presence'
+2024-03-22 05:32:33.804 +00:00 [INF] Executed endpoint 'hubs/presence'
+2024-03-22 05:32:33.806 +00:00 [INF] Request finished HTTP/2 CONNECT https://localhost:7228/hubs/presence?id=PsPwMjFW6tQ-laxFs1XZ_g&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhQGdtYWlsLmNvbSIsIm5hbWVpZCI6ImFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTcxMTA4NTY5NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjgifQ.OVAtqYxP9JugpceGweTn58SOr23Dxs7xrDZtmJBX1ec - - - 200 - - 759317.8105ms
+2024-03-22 05:32:33.807 +00:00 [INF] Request finished HTTP/2 CONNECT https://localhost:7228/hubs/presence?id=wY1oV92c8i5DTQJXZ_JhaA&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhQGdtYWlsLmNvbSIsIm5hbWVpZCI6ImFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTcxMTA4NTY5NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjgifQ.OVAtqYxP9JugpceGweTn58SOr23Dxs7xrDZtmJBX1ec - - - 200 - - 759407.0657ms
+2024-03-22 11:44:37.339 +00:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7228/api/Auth/Login - -
+2024-03-22 11:44:37.343 +00:00 [INF] CORS policy execution successful.
+2024-03-22 11:44:37.345 +00:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7228/api/Auth/Login - - - 204 - - 5.6509ms
+2024-03-22 11:44:37.347 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 51
+2024-03-22 11:44:37.349 +00:00 [INF] CORS policy execution successful.
+2024-03-22 11:44:37.350 +00:00 [INF] Executing endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-03-22 11:44:37.352 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hexus.Models.DTO.LoginRequestDto) on controller Hexus.Controllers.AuthController (Hexus).
+2024-03-22 11:44:37.415 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DisplayName], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-03-22 11:44:37.538 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-03-22 11:44:37.543 +00:00 [INF] Executing OkObjectResult, writing value of type 'Hexus.Models.DTO.LoginResponseDto'.
+2024-03-22 11:44:37.546 +00:00 [INF] Executed action Hexus.Controllers.AuthController.Login (Hexus) in 190.0088ms
+2024-03-22 11:44:37.549 +00:00 [INF] Executed endpoint 'Hexus.Controllers.AuthController.Login (Hexus)'
+2024-03-22 11:44:37.551 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/api/Auth/Login application/json 51 - 200 - application/json;+charset=utf-8 204.2321ms
+2024-03-22 11:44:37.567 +00:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - -
+2024-03-22 11:44:37.604 +00:00 [INF] CORS policy execution successful.
+2024-03-22 11:44:37.656 +00:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - - - 204 - - 88.3238ms
+2024-03-22 11:44:37.660 +00:00 [INF] Request starting HTTP/2 POST https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - 0
+2024-03-22 11:44:37.664 +00:00 [INF] CORS policy execution successful.
+2024-03-22 11:44:37.666 +00:00 [INF] Executing endpoint 'hubs/presence/negotiate'
+2024-03-22 11:44:37.674 +00:00 [INF] Executed endpoint 'hubs/presence/negotiate'
+2024-03-22 11:44:37.676 +00:00 [INF] Request finished HTTP/2 POST https://localhost:7228/hubs/presence/negotiate?negotiateVersion=1 - 0 - 200 316 application/json 16.1500ms
+2024-03-22 11:44:37.688 +00:00 [INF] Request starting HTTP/2 CONNECT https://localhost:7228/hubs/presence?id=_LNh3ZLcLDXpArq1MHIoRw&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhQGdtYWlsLmNvbSIsIm5hbWVpZCI6ImFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTcxMTEwODc3NywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjgifQ.IEAH5PA2zflEANXSCwOsSsg7VlNYUqbm1dw1Dnd01f8 - -
+2024-03-22 11:44:37.690 +00:00 [INF] CORS policy execution successful.
+2024-03-22 11:44:37.692 +00:00 [INF] Executing endpoint 'hubs/presence'
+2024-03-22 11:45:55.022 +00:00 [INF] Executed endpoint 'hubs/presence'
+2024-03-22 11:45:55.157 +00:00 [INF] Request finished HTTP/2 CONNECT https://localhost:7228/hubs/presence?id=_LNh3ZLcLDXpArq1MHIoRw&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhQGdtYWlsLmNvbSIsIm5hbWVpZCI6ImFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTcxMTEwODc3NywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjgifQ.IEAH5PA2zflEANXSCwOsSsg7VlNYUqbm1dw1Dnd01f8 - - - 200 - - 77466.9297ms
